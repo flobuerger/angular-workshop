@@ -35,4 +35,15 @@ Um bei euch am Rechner Angular zu installieren benötigt ihr **npm**
     3. Neuer Eintrag mit Pfad zur angular cli z.B: **D:/TA3/npm/node_modules/@angular/cli**
  3. neue CommandLine öffnen und **ng version** 
 
+### Projekt aufsetzen
+
+1. kopiert das angefügte zip in euren **D:/TA3/<Ordner>/**
+2. entzippen von **angular-workshop-app.zip**
+3. Ordner im **VS Code** öffnen **/angular-workshop-app**
+4.  Terminal öffnen und im Pfad des Ordners **npm install** ausführen
+5. **ng serve** ausführen -> angular projekt startet
+6. im Browser **http://localhost:4200**
+
+
+**Fertig für morgen**
 **Bei Fragen einfach bei mir melden**
