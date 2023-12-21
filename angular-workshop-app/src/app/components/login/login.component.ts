@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Signal, computed, effect, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginStateService } from 'src/app/services/login-state.service';
 
@@ -16,7 +17,15 @@ export class LoginComponent {
 
   subscription = new Subscription();
 
-  constructor(private loginStateService: LoginStateService) {
+  testSignal = signal<string>("Max");
+  readableSignal: Signal<string> = computed(() => this.testSignal() + " Mustermann");
+
+  constructor(private loginStateService: LoginStateService,
+    private router: Router) {
+
+    effect(() => {
+      console.log("My readable signal: " + this.testSignal());
+    })
 
     this.subscription.add(
       this.loginStateService.username$.subscribe((username) => this.displayUsername = username
@@ -31,5 +40,7 @@ export class LoginComponent {
   setLogin() {
     this.loginStateService.setUsername(this.username);
     this.loginStateService.setPassword(this.password);
+
+    this.router.navigate(['/user']);
   }
 }

@@ -10,6 +10,11 @@ import { routes } from './app.routes';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { UserComponent } from './components/user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SalutationPipe } from './pipes/salutation.pipe';
+import { JsonPipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -17,15 +22,18 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     LoginComponent,
     PageNotFoundComponent,
     RegistrationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SalutationPipe,
   ],
-  providers: [provideRouter(routes), LoginStateService],
+  providers: [provideRouter(routes), LoginStateService, SalutationPipe, JsonPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
