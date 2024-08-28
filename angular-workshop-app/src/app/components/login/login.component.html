@@ -1,0 +1,47 @@
+<div class="flex">
+  <div class="flex flex-col gap-5">
+    <div class="flex flex-row gap-5">
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Username</span>
+          </div>
+          <input type="text"
+                 [(ngModel)]="username"
+                 placeholder="Username"
+                 name="username"
+                 class="input input-bordered w-full max-w-xs" />
+        </label>
+      </div>
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Password</span>
+          </div>
+          <input type="password"
+                 [(ngModel)]="password"
+                 placeholder="Password"
+                 name="password"
+                 class="input input-bordered w-full max-w-xs" />
+        </label>
+      </div>
+    </div>
+
+    <div class="btn btn-outline w-32 btn-success"
+         (click)="setLogin()">Login</div>
+    <div>
+      <div class="flex flex-col">
+        <div class="flex flex-row">
+          <div>Username: </div>
+          <div>{{displayUsername}}</div>
+
+        </div>
+
+        <div class="flex flex-row">
+          <div for="password">Password: </div>
+          <div>{{displayPassword}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

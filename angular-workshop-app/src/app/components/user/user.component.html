@@ -1,0 +1,160 @@
+<div class="flex flex-col">
+  <div class="flex flex-row w-full justify-end ">
+    <div class="border gap-5 rounded-lg bg-slate-100"
+         *ngIf="username && password">
+      <div class="m-5 gap-5 flex flex-row  ">
+        <div class="text-sm">
+          <div class="">Username </div>
+          <div class="font-thin">{{username}}</div>
+        </div>
+        <div class="text-sm">
+          <div class="">Password </div>
+          <div class="font-thin">{{password}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row bg-slate-100 border  rounded-lg "
+         *ngIf="!username && !password">
+      <div class="m-5">Not logged in</div>
+    </div>
+  </div>
+  <form [formGroup]="userForm"
+        (ngSubmit)="onSubmit()">
+
+    <div class="flex flex-row gap-5">
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Vorname</span>
+          </div>
+          <input type="text"
+                 formControlName="name"
+                 placeholder="Name"
+                 class="input input-bordered w-full max-w-xs" />
+        </label>
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+             class="alert alert-danger">
+          <div *ngIf="name?.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name?.errors?.['minlength']">
+            Name must be at least 3 characters long.
+          </div>
+          <div *ngIf="name?.errors?.['forbiddenName']">
+            Name cannot be Max.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Nachname</span>
+          </div>
+          <input type="text"
+                 placeholder="Nachname"
+                 formControlName="surname"
+                 class="input input-bordered w-full max-w-xs" />
+        </label>
+        <div *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)"
+             class="alert alert-danger">
+          <div *ngIf="surname?.errors?.['required']">
+            Surname is required.
+          </div>
+          <div *ngIf="surname?.errors?.['minlength']">
+            Surname must be at least 3 characters long.
+          </div>
+          <div *ngIf="surname?.errors?.['forbiddenName']">
+            Surname cannot be Mustermann.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row gap-5">
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Age</span>
+          </div>
+          <input type="number"
+                 placeholder="Age"
+                 formControlName="age"
+                 class="input input-bordered w-full max-w-xs" />
+        </label>
+        <div *ngIf="age?.invalid && (age?.dirty || age?.touched)"
+             class="alert alert-danger">
+          <div *ngIf="age?.errors?.['required']">
+            age is required.
+          </div>
+          <div *ngIf="age?.errors?.['min']">
+            age must be at least 1.
+          </div>
+          <div *ngIf="age?.errors?.['max']">
+            age must be lower then 120.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Gender</span>
+          </div>
+          <select formControlName="gender"
+                  formControlName="gender"
+                  class="select select-bordered">
+            <option selected
+                    value="undefined">Bitte wählen</option>
+            <option value="MALE">Männlich</option>
+            <option value="FEMALE">Weiblich</option>
+            <option value="UNKNOWN">Unknown</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="flex flex-row gap-5">
+      <form formGroupName="adress">
+        <div class="flex flex-row gap-5">
+          <div>
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Postalcode</span>
+              </div>
+              <input type="number"
+                     placeholder="Postalcode"
+                     formControlName="postalcode"
+                     class="input input-bordered w-full max-w-xs" />
+            </label>
+            <div *ngIf="postalcode?.invalid && (postalcode?.dirty || postalcode?.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="postalcode?.errors?.['required']">
+                postalcode is required.
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">City</span>
+              </div>
+              <input type="text"
+                     placeholder="City"
+                     formControlName="city"
+                     class="input input-bordered w-full max-w-xs" />
+            </label>
+            <div *ngIf="city?.invalid && (city?.dirty || city?.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="city?.errors?.['required']">
+                city is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <button type="submit"
+              [disabled]="!userForm.valid"
+              class="btn btn-success mt-5">Submit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="flex flex-col m-24 h-screen ">
+  <div class="flex flex-row">
+    <div class="h-16 w-16">
+      <a routerLink="">
+        <img alt="angular-logo"
+             src="../assets/angular-logo.png"
+             class="object-contain" />
+      </a>
+    </div>
+    <div class="flex flex-col">
+      <div class="text-2xl">Hi 👋🏼</div>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div class="flex-initial flex-col  bg-slate-200">
+      <div class="m-5 flex flex-col">
+        <div>
+          <a class="link"
+             routerLink="login"> Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex-grow w-full">
+      <div class="m-5">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
